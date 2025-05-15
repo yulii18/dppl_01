@@ -101,11 +101,16 @@ header {
 
 .nav-links {
   display: flex;
+  justify-content: center; /* Pusatkan secara horizontal */
+  align-items: center;     /* Pusatkan secara vertikal (jika dibutuhkan) */
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .nav-links li {
-  margin-left: 30px;
+  margin-right: 20px;
+  position: relative;
 }
 
 .nav-links a {
@@ -427,8 +432,13 @@ footer {
 }
 
 /* Modal */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Modal wrapper */
 .modal {
-  display: none;
+  display: none; /* akan diubah ke flex saat aktif */
   position: fixed;
   top: 0;
   left: 0;
@@ -436,19 +446,25 @@ footer {
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   z-index: 2000;
-  align-items: center;
+  align-items: flex-start; /* agar bisa diatur jaraknya dari atas */
   justify-content: center;
+  padding-top: 10vh;
+  overflow: auto; /* biar bisa scroll isi modal kalau terlalu panjang */
 }
 
+/* Konten modal */
 .modal-content {
   background: var(--light-color);
   padding: 30px;
   border-radius: 10px;
   max-width: 500px;
   width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
   position: relative;
 }
 
+/* Tombol close */
 .close-modal {
   position: absolute;
   top: 15px;

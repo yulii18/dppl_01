@@ -111,12 +111,12 @@ const findPmiBtn = document.getElementById("findPmiBtn");
 const modals = document.querySelectorAll(".modal");
 const closeModalBtns = document.querySelectorAll(".close-modal");
 
-registerBtns.forEach((btn) => {
-btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    document.getElementById("registerModal").style.display = "flex";
-});
-});
+// registerBtns.forEach((btn) => {
+// btn.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     document.getElementById("registerModal").style.display = "flex";
+// });
+// });
 
 bloodSearchBtn.addEventListener("click", (e) => {
 e.preventDefault();
