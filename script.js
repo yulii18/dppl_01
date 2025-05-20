@@ -230,7 +230,7 @@ window.addEventListener("scroll", () => {
   });
 
 // ===== Login Functionality =====
-document.addEventListener('DOMContentLoaded', function(){
+(function() {
   // Cek jika di halaman login
   if (document.getElementById('loginForm')) {
     const loginForm = document.getElementById('loginForm');
@@ -256,42 +256,20 @@ document.addEventListener('DOMContentLoaded', function(){
         alert('Email dan password harus diisi!');
         return;
       } else {
-        then.then(() => {
-          if (userType === 'pencari') {
-              window.location.href = 'dashboard.html';
-          } else {
-              window.location.href = 'dashboard.html';
-          } 
+        // Simulasi login sukses
+        // Simpan email jika remember dicentang
+        if (remember) {
+          localStorage.setItem('rememberedEmail', email);
+        } else {
+          localStorage.removeItem('rememberedEmail');
+        }
+        // Redirect ke dashboard
+        window.location.href = 'dashboard.html';
       }
-      
-//       // Validasi sederhana
-//       if (!email || !password) {
-//           Swal.fire({
-//               icon: 'error',
-//               title: 'Oops...',
-//               text: 'Email dan password harus diisi!',
-//           });
-//           return;
-//       }
-      
-//       // Simulasi login berhasil
-//       Swal.fire({
-//           icon: 'success',
-//           title: 'Login Berhasil',
-//           text: 'Anda akan diarahkan ke dashboard',
-//           timer: 1500,
-//           showConfirmButton: false
-//       }).then(() => {
-//           if (userType === 'pencari') {
-//               window.location.href = 'dashboard.html';
-//           } else {
-//               window.location.href = 'dashboard.html';
-//           }
-//       });
-//   });
-// });
+    });
+  }
 
-// ===== Registration Functionality =====
+  // ===== Registration Functionality =====
 document.addEventListener('DOMContentLoaded', function() {
   // Cek jika di halaman registrasi
   if (document.getElementById('registrationForm')) {
@@ -599,3 +577,4 @@ document.addEventListener('DOMContentLoaded', function() {
         updatePagination();
     }
 });
+})();
