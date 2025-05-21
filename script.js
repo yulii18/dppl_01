@@ -12,15 +12,46 @@ mobileMenuBtn.addEventListener("click", () => {
 navLinks.classList.toggle("active");
 });
 
-
 // Close mobile menu when clicking on a link
 document.querySelectorAll(".nav-links a").forEach((link) => {
 link.addEventListener('click', () => {
   // Hapus kelas "active" dari semua link
-  navLinks.forEach(item => item.classList.remove('active'));
+  document.querySelectorAll(".nav-links a").forEach(item => item.classList.remove('active'));
   
   // Tambahkan kelas "active" ke link yang diklik
   link.classList.add('active');
+  
+  // Tutup menu mobile jika terbuka
+  navLinks.classList.remove("active");
+});
+});
+
+// Tambahkan deteksi section yang sedang dilihat
+function getCurrentSection() {
+  const sections = document.querySelectorAll('section');
+  let currentSection = '';
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    const sectionHeight = section.clientHeight;
+    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+      currentSection = section.getAttribute('id');
+    }
+  });
+  
+  return currentSection;
+}
+
+// Update active link berdasarkan section yang sedang dilihat
+window.addEventListener("scroll", () => {
+  const currentSection = getCurrentSection();
+  
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.classList.remove("active");
+    const href = link.getAttribute("href").substring(1); // Hapus tanda #
+    if (href === currentSection) {
+      link.classList.add("active");
+    }
   });
 });
 
@@ -104,7 +135,6 @@ if (inView) {
 }
 }
 
-
 window.addEventListener("scroll", checkStatsInView);
 window.addEventListener("load", checkStatsInView);
 
@@ -118,12 +148,12 @@ const findPmiBtn = document.getElementById("findPmiBtn");
 const modals = document.querySelectorAll(".modal");
 const closeModalBtns = document.querySelectorAll(".close-modal");
 
-// registerBtns.forEach((btn) => {
-// btn.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     document.getElementById("registerModal").style.display = "flex";
-// });
-// });
+registerBtns.forEach((btn) => {
+btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.getElementById("registerModal").style.display = "flex";
+});
+});
 
 bloodSearchBtn.addEventListener("click", (e) => {
 e.preventDefault();
@@ -309,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function() {
       alert('Registrasi berhasil! Data Anda telah tersimpan.');
       
       // Redirect ke halaman login (uncomment saat implementasi nyata)
-      // window.location.href = 'login.html';
+      window.location.href = 'login.html';
       
       // Reset form
       this.reset();

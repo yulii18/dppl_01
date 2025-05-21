@@ -98,7 +98,7 @@
                     </button>
                     
                     <div class="registration-footer">
-                        <p>Sudah punya akun? <a href="login.html">Login disini</a></p>
+                        <p>Sudah punya akun? <a href="login.php">Login disini</a></p>
                     </div>
                 </form>
             </div>
@@ -153,3 +153,37 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
+<?php
+require_once 'Database.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $db = Database::getInstance();
+    
+    $data = [
+        $_POST['nik'],
+        $_POST['nama'],
+        $_POST['tempatLahir'],
+        $_POST['tanggalLahir'],
+        $_POST['jenisKelamin'],
+        $_POST['golonganDarah'],
+        $_POST['alamat'],
+        $_POST['kelurahan'],
+        $_POST['kecamatan'],
+        $_POST['kota'],
+        $_POST['pekerjaan'],
+        password_hash($_POST['password'], PASSWORD_DEFAULT)
+    ];
+    
+    $query = "INSERT INTO Users (nik, full_name, birth_place, birth_date, gender, blood_type, address, 
+              kelurahan, kecamatan, city, occupation, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+    try {
+        $db->insert($query, $data);
+        header('Location: login.php?registered=true');
+        exit();
+    } catch (Exception $e) {
+        $error = "Gagal mendaftar: " . $e->getMessage();
+    }
+}
+?>

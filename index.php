@@ -19,7 +19,7 @@
             <li><a href="#donor">Donor Darah</a></li>
             <li><a href="#about">Tentang Kami</a></li>
             <li><a href="#contact">Kontak</a></li>
-            <li><a href="login.html" class="btn" >Masuk</a></li>
+            <li><a href="login.php" class="btn" >Masuk</a></li>
           </ul>
         </nav>
       </div>
@@ -57,7 +57,7 @@
                 Bergabunglah dengan ribuan pendonor darah yang siap membantu
                 kapan saja dibutuhkan.
               </p>
-              <a href="login.html" class="btn" id="registerBtn2">Daftar Sekarang</a>
+              <a href="login.php" class="btn" id="registerBtn2">Daftar Sekarang</a>
             </div>
           </div>
         </div>
@@ -89,7 +89,7 @@
                 Cari pendonor darah dengan golongan darah tertentu di lokasi
                 terdekat saat situasi darurat.
               </p>
-              <a href="login.html" class="btn" id="bloodSearchBtn">Cari Darah</a>
+              <a href="login.php" class="btn" id="bloodSearchBtn">Cari Darah</a>
             </div>
           </div>
 
@@ -192,7 +192,7 @@
             komunitas yang menyelamatkan nyawa. Bersama kita bisa membuat
             perbedaan!
           </p>
-          <a href="login.html" class="btn" id="registerBtn3">Daftar Sekarang</a>
+          <a href="login.php" class="btn" id="registerBtn3">Daftar Sekarang</a>
         </div>
       </div>
     </section>
@@ -218,9 +218,9 @@
           <div class="footer-column">
             <h3>Layanan</h3>
             <ul class="footer-links">
-              <li><a href="permintaan_darah.html">Pencarian Darah</a></li>
-              <li><a href="daftar_donor.html">Pendaftaran Donor</a></li>
-              <li><a href="jadwal_donor.html">Jadwal Donor</a></li>
+              <li><a href="permintaan_darah.php">Pencarian Darah</a></li>
+              <li><a href="daftar_donor.php">Pendaftaran Donor</a></li>
+              <li><a href="jadwal_donor.php">Jadwal Donor</a></li>
               <li><a href="#">Informasi Kesehatan</a></li>
             </ul>
           </div>

@@ -1,3 +1,25 @@
+<?php
+session_start();
+require_once 'Database.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $db = Database::getInstance();
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    
+    $query = "SELECT * FROM Users WHERE email = ?";
+    $result = $db->select($query, [$email]);
+    
+    if ($result && password_verify($password, $result[0]['password'])) {
+        $_SESSION['user_id'] = $result[0]['id'];
+        $_SESSION['user_name'] = $result[0]['full_name'];
+        header('Location: dashboard.php');
+        exit();
+    } else {
+        $error = "Email atau password salah";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -48,7 +70,7 @@
                     </button>
                     
                     <div class="login-footer">
-                        <p>Belum punya akun? <a href="register.html">Daftar sekarang</a></p>
+                        <p>Belum punya akun? <a href="register.php">Daftar sekarang</a></p>
                         <p>Dengan masuk, Anda setuju dengan <a href="#">Syarat dan Ketentuan</a> serta <a href="#">Kebijakan Privasi</a> kami.</p>
                     </div>
                 </form>

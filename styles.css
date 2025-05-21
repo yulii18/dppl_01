@@ -117,14 +117,28 @@ header {
   color: var(--dark-color);
   font-weight: 500;
   transition: color 0.3s ease;
+  position: relative;
 }
 
-.nav-links a:hover {
-  color: var(--primary-color);
-}
-
+.nav-links a:hover,
 .nav-links a.active {
   color: var(--primary-color);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
 }
 .mobile-menu-btn {
   display: none;
