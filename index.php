@@ -1,381 +1,355 @@
-<!doctype html>
-<html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SIPANDORA - Sistem Pendonor Darah</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+<?php include 'includes/header.php'; ?>
 
-  <body>
-    <!-- Header -->
-    <header>
-      <div class="container">
-        <nav class="navbar">
-          <a href="#" class="logo">SIPAN<span>DORA</span></a>
-          <button class="mobile-menu-btn">☰</button>
-          <ul class="nav-links">
-            <li><a href="#home" class="active">Beranda</a></li>
-            <li><a href="#donor">Donor Darah</a></li>
-            <li><a href="#about">Tentang Kami</a></li>
-            <li><a href="#contact">Kontak</a></li>
-            <li><a href="login.php" class="btn" >Masuk</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <!-- Hero Carousel -->
-    <section class="hero" id="home">
-      <div class="carousel">
-        <div class="carousel-inner">
-          <div
-            class="carousel-item active"
-            style="
-              background-image: url(&quot;https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80&quot;);
-            "
-          >
-            <div class="carousel-caption">
-              <h2>Donor Darah Selamatkan Nyawa</h2>
-              <p>
-                Setetes darah Anda bisa menjadi harapan bagi mereka yang
-                membutuhkan. Mari bergabung menjadi pendonor darah.
-              </p>
-              <a href="#donor" class="btn">Pelajari Lebih Lanjut</a>
+<main class="pt-16"> <!-- Add pt-16 to account for fixed navbar height -->
+    <!-- Hero Section dengan Background Image -->
+    <section id="beranda" class="relative blood-red text-white py-24">
+        <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&q=80'); opacity: 0.2;"></div>
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center relative z-10">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Donor Darah Selamatkan Nyawa</h1>
+                <p class="text-xl mb-6">Setetes darah Anda bisa menjadi harapan bagi mereka yang membutuhkan. Mari bergabung menjadi pendonor darah.</p>
+                <div class="flex gap-4">
+                    <a href="register.php" class="bg-white blood-red-text px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition inline-block">
+                        <i data-feather="user-plus" class="w-5 h-5 inline-block mr-2"></i>Daftar Sekarang
+                    </a>
+                    <a href="#layanan" class="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-red-600 transition inline-block">
+                        <i data-feather="info" class="w-5 h-5 inline-block mr-2"></i>Pelajari Lebih Lanjut
+                    </a>
+                </div>
             </div>
-          </div>
- 
-          <div
-            class="carousel-item"
-            style="
-              background-image: url(&quot;https://images.unsplash.com/photo-1584473457406-6240486418e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80&quot;);
-            "
-          >
-            <div class="carousel-caption">
-              <h2>Komunitas Pendonor Aktif</h2>
-              <p>
-                Bergabunglah dengan ribuan pendonor darah yang siap membantu
-                kapan saja dibutuhkan.
-              </p>
-              <a href="login.php" class="btn" id="registerBtn2">Daftar Sekarang</a>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&q=80" alt="Donor Darah" class="w-4/5 rounded-lg shadow-2xl transform hover:scale-105 transition duration-300">
             </div>
-          </div>
         </div>
-        <div class="carousel-controls">
-          <button class="carousel-control prev">❮</button>
-          <button class="carousel-control next">❯</button>
-        </div>
-      </div>
     </section>
 
-    <!-- Emergency Section -->
-    <section class="emergency-section" id="emergency">
-      <div class="container">
-        <h2 class="section-title text-center">Layanan Darurat</h2>
-        <p class="text-center" style="max-width: 800px; margin: 0 auto 30px">
-          Kami menyediakan layanan cepat untuk situasi darurat yang membutuhkan
-          darah atau bantuan medis segera.
-        </p>
-
-        <div class="emergency-cards">
-          <div class="emergency-card">
-            <img
-              src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-              alt="Pencarian Darah Darurat"
-            />
-            <div class="emergency-card-content">
-              <h3>Pencarian Darah Darurat</h3>
-              <p>
-                Cari pendonor darah dengan golongan darah tertentu di lokasi
-                terdekat saat situasi darurat.
-              </p>
-              <a href="login.php" class="btn" id="bloodSearchBtn">Cari Darah</a>
+        <!-- Layanan Section dengan Cards -->
+        <section id="layanan" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 blood-red-text">Layanan Darurat</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Kami menyediakan layanan cepat untuk situasi darurat yang membutuhkan darah atau bantuan medis segera.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition group">
+                    <div class="blood-red text-white p-4 rounded-full w-16 h-16 mb-6 group-hover:scale-110 transition">
+                        <i data-feather="search" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Cari Donor</h3>
+                    <p class="text-gray-600">Temukan donor darah yang sesuai dengan kebutuhan Anda secara cepat.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition group">
+                    <div class="blood-red text-white p-4 rounded-full w-16 h-16 mb-6 group-hover:scale-110 transition">
+                        <i data-feather="calendar" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Jadwal Donor</h3>
+                    <p class="text-gray-600">Atur jadwal donor darah Anda dengan mudah dan fleksibel.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition group">
+                    <div class="blood-red text-white p-4 rounded-full w-16 h-16 mb-6 group-hover:scale-110 transition">
+                        <i data-feather="phone-call" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Kontak Darurat</h3>
+                    <p class="text-gray-600">Hubungi kami 24/7 untuk kebutuhan darurat donor darah.</p>
+                </div>
             </div>
-          </div>
+        </div>
+    </section>
 
-          <div class="emergency-card">
-            <img
-              src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-              alt="Lokasi PMI Terdekat"
-            />
-            <div class="emergency-card-content">
-              <h3>Lokasi PMI Terdekat</h3>
-              <p>
-                Temukan unit Palang Merah Indonesia terdekat untuk donor darah
-                atau bantuan medis.
-              </p>
-              <a href="#" class="btn" id="findPmiBtn">Cari PMI</a>
+        <!-- Stats Section dengan Animasi -->
+        <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-8 rounded-xl shadow-lg blood-light transform hover:-translate-y-2 transition duration-300">
+                    <div class="blood-red text-white p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                        <i data-feather="users" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold blood-red-text mb-2" id="donor-count">1,234</h3>
+                    <p class="text-gray-700 text-lg">Pendonor Terdaftar</p>
+                </div>
+                <div class="p-8 rounded-xl shadow-lg blood-light transform hover:-translate-y-2 transition duration-300">
+                    <div class="blood-red text-white p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                        <i data-feather="activity" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold blood-red-text mb-2" id="request-count">567</h3>
+                    <p class="text-gray-700 text-lg">Permintaan Darah</p>
+                </div>
+                <div class="p-8 rounded-xl shadow-lg blood-light transform hover:-translate-y-2 transition duration-300">
+                    <div class="blood-red text-white p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                        <i data-feather="heart" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold blood-red-text mb-2" id="saved-count">890</h3>
+                    <p class="text-gray-700 text-lg">Nyawa Diselamatkan</p>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
-    <!-- Info Section -->
-    <section class="info-section" id="donor">
-      <div class="container">
-        <h2 class="section-title text-center">Informasi Donor Darah</h2>
-        <p class="text-center" style="max-width: 800px; margin: 0 auto 30px">
-          Pelajari lebih lanjut tentang donor darah dan bagaimana Anda bisa
-          berkontribusi menyelamatkan nyawa.
-        </p>
-
-        <div class="info-grid">
-          <div class="info-item">
-            <i>💉</i>
-            <h3>Syarat Donor Darah</h3>
-            <p>
-              Berat badan minimal 45 kg, usia 17-65 tahun, tekanan darah normal,
-              dan kondisi kesehatan yang baik.
-            </p>
-          </div>
-
-          <div class="info-item">
-            <i>⏱️</i>
-            <h3>Jadwal Donor</h3>
-            <p>
-              Donor darah bisa dilakukan setiap 3 bulan untuk pria dan setiap 4
-              bulan untuk wanita.
-            </p>
-          </div>
-
-          <div class="info-item">
-            <i>🩸</i>
-            <h3>Manfaat Donor Darah</h3>
-            <p>
-              Menjaga kesehatan jantung, mendeteksi penyakit dini, dan tentunya
-              menyelamatkan nyawa.
-            </p>
-          </div>
-
-          <div class="info-item">
-            <i>❓</i>
-            <h3>Pertanyaan Umum</h3>
-            <p>
-              Temukan jawaban atas pertanyaan umum seputar donor darah dan
-              prosesnya.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-number" id="donorCount">0</div>
-            <div class="stat-label">Pendonor Terdaftar</div>
-          </div>
-
-          <div class="stat-item">
-            <div class="stat-number" id="bloodRequestCount">0</div>
-            <div class="stat-label">Permintaan Darah</div>
-          </div>
-
-          <div class="stat-item">
-            <div class="stat-number" id="livesSavedCount">0</div>
-            <div class="stat-label">Nyawa Diselamatkan</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-content">
-          <h2>Siap Menjadi Pahlawan?</h2>
-          <p>
-            Daftarkan diri Anda sebagai pendonor darah dan jadilah bagian dari
-            komunitas yang menyelamatkan nyawa. Bersama kita bisa membuat
-            perbedaan!
-          </p>
-          <a href="login.php" class="btn" id="registerBtn3">Daftar Sekarang</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-column">
-            <h3 id="about">Tentang Kami</h3>
-            <p>
-              SIPANDORA adalah platform inovatif yang menghubungkan pendonor
-              darah dengan mereka yang membutuhkan.
-            </p>
-            <div class="social-links">
-              <a href="https://web.facebook.com/palangmerah/about?locale=id_ID" target="_blank"><span>FB</span></a>
-              <a href="https://youtube.com/@pmi_tv?si=LvQ3QXdxt2JyqkKn" target="_blank"><span>YT</span></a>
-              <a href="https://www.instagram.com/palangmerah_indonesia?igsh=a3l2bnR2Nmw2YXVm" target="_blank"><span>IG</span></a>
-              <a href="https://www.pmi.or.id/" target="_blank"><span>WEB</span></a>
+     <!-- About Section -->
+     <section id="tentang" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h2 class="text-3xl font-bold mb-6 blood-red-text">Tentang Kami</h2>
+                    <p class="text-gray-600 mb-4">SIPANDORA (Sistem Pendonor Darah dan Respon Darurat) adalah platform inovatif yang menghubungkan pendonor darah dengan mereka yang membutuhkan.</p>
+                    <p class="text-gray-600 mb-6">Kami berkomitmen untuk menyediakan solusi cepat dan efisien dalam manajemen donor darah, terutama dalam situasi darurat yang membutuhkan respons cepat.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-600 hover:text-red-600"><i data-feather="facebook" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-red-600"><i data-feather="twitter" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-red-600"><i data-feather="instagram" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-red-600"><i data-feather="youtube" class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div id="map" class="h-64 md:h-80 rounded-lg shadow-lg"></div>
+                </div>
             </div>
-          </div>
+        </div>
+    </section>
 
-          <div class="footer-column">
-            <h3>Layanan</h3>
-            <ul class="footer-links">
-              <li><a href="permintaan_darah.php">Pencarian Darah</a></li>
-              <li><a href="daftar_donor.php">Pendaftaran Donor</a></li>
-              <li><a href="jadwal_donor.php">Jadwal Donor</a></li>
-              <li><a href="#">Informasi Kesehatan</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-column">
-            <h3>Kontak Kami</h3>
-            <p><strong>Alamat:</strong> Jl. Kartini No. 20, Lolu Selatan, Kec. Palu Selatan, Kota Palu, Sulawesi Tengah 94235</p>
-            <p><strong>Email:</strong> info@sipandora.id</p>
-            <p><strong>Telepon:</strong> (021) 1234-5678</p>
-            <p><strong>Darurat:</strong> 119 (24 Jam)</p>
-          </div>
+    <!-- Elegant Contact Section -->
+<section id="kontak" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold blood-red-text mb-4">Hubungi Kami</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Kami siap membantu Anda 24/7. Hubungi kami melalui berbagai cara berikut:</p>
         </div>
 
-        <div class="footer-bottom">
-          <p>&copy; 2023 SIPANDORA. Semua Hak Dilindungi.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Contact Information -->
+            <div class="space-y-8">
+                <!-- Contact Card 1 -->
+                <div class="flex items-start space-x-6 p-6 bg-gray-50 rounded-xl hover:shadow-md transition">
+                    <div class="blood-red p-3 rounded-full">
+                        <i data-feather="map-pin" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Lokasi Kami</h3>
+                        <p class="text-gray-600">Jl. PMI No. 123, Kota Malang</p>
+                        <a href="#" class="inline-block mt-3 blood-red-text font-medium flex items-center">
+                            Lihat di Peta <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Card 2 -->
+                <div class="flex items-start space-x-6 p-6 bg-gray-50 rounded-xl hover:shadow-md transition">
+                    <div class="blood-red p-3 rounded-full">
+                        <i data-feather="phone" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Telepon Darurat</h3>
+                        <p class="text-gray-600">+62 812 3456 7890 (24 Jam)</p>
+                        <p class="text-gray-600">+62 822 9876 5432 (WhatsApp)</p>
+                    </div>
+                </div>
+
+                <!-- Contact Card 3 -->
+                <div class="flex items-start space-x-6 p-6 bg-gray-50 rounded-xl hover:shadow-md transition">
+                    <div class="blood-red p-3 rounded-full">
+                        <i data-feather="mail" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Email Kami</h3>
+                        <p class="text-gray-600">info@sipandora.com</p>
+                        <p class="text-gray-600">darurat@sipandora.com</p>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="pt-4">
+                    <h4 class="text-lg font-medium mb-4">Media Sosial</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="blood-red p-3 rounded-full text-white hover:bg-red-700 transition">
+                            <i data-feather="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="blood-red p-3 rounded-full text-white hover:bg-red-700 transition">
+                            <i data-feather="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="blood-red p-3 rounded-full text-white hover:bg-red-700 transition">
+                            <i data-feather="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="blood-red p-3 rounded-full text-white hover:bg-red-700 transition">
+                            <i data-feather="youtube" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
+                <h3 class="text-xl font-semibold mb-6 blood-red-text">Kirim Pesan</h3>
+                <form class="space-y-5">
+                    <div>
+                        <label for="name" class="block text-gray-700 mb-2">Nama Lengkap</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i data-feather="user" class="w-5 h-5 text-gray-400"></i>
+                            </div>
+                            <input type="text" id="name" class="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="Nama Anda">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-gray-700 mb-2">Alamat Email</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i data-feather="mail" class="w-5 h-5 text-gray-400"></i>
+                            </div>
+                            <input type="email" id="email" class="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="email@contoh.com">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="subject" class="block text-gray-700 mb-2">Subjek</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i data-feather="file-text" class="w-5 h-5 text-gray-400"></i>
+                            </div>
+                            <input type="text" id="subject" class="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="Subjek pesan">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-gray-700 mb-2">Pesan</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 pt-3 flex items-start pointer-events-none">
+                                <i data-feather="message-square" class="w-5 h-5 text-gray-400"></i>
+                            </div>
+                            <textarea id="message" rows="4" class="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="Tulis pesan Anda..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full blood-red text-white py-3 px-6 rounded-lg font-medium hover:bg-red-700 transition flex items-center justify-center">
+                        <i data-feather="send" class="w-5 h-5 mr-2"></i> Kirim Pesan
+                    </button>
+                </form>
+            </div>
         </div>
-      </div>
-    </footer>
-
-    <!-- Register Modal -->
-    <div class="modal" id="registerModal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2>Pendaftaran Donor Darah</h2>
-        <form id="donorForm">
-          <div class="form-group">
-            <label for="fullName">Nama Lengkap</label>
-            <input type="text" id="fullName" required />
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" required />
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Nomor Telepon</label>
-            <input type="tel" id="phone" required />
-          </div>
-
-          <div class="form-group">
-            <label for="bloodType">Golongan Darah</label>
-            <select id="bloodType" required>
-              <option value="">Pilih Golongan Darah</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="AB">AB</option>
-              <option value="O">O</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="address">Alamat</label>
-            <textarea id="address" rows="3" required></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="lastDonation">Terakhir Donor (jika pernah)</label>
-            <input type="date" id="lastDonation" />
-          </div>
-
-          <button type="submit" class="btn">Daftar Sekarang</button>
-        </form>
-      </div>
     </div>
+</section>
 
-    <!-- Blood Search Modal -->
-    <div class="modal" id="bloodSearchModal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2>Pencarian Darah Darurat</h2>
-        <form id="bloodSearchForm">
-          <div class="form-group">
-            <label for="searchBloodType">Golongan Darah Dibutuhkan</label>
-            <select id="searchBloodType" required>
-              <option value="">Pilih Golongan Darah</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="AB">AB</option>
-              <option value="O">O</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="searchLocation">Lokasi</label>
-            <input
-              type="text"
-              id="searchLocation"
-              placeholder="Masukkan kota atau kecamatan"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="urgencyLevel">Tingkat Urgensi</label>
-            <select id="urgencyLevel" required>
-              <option value="high">Sangat Mendesak</option>
-              <option value="medium">Mendesak</option>
-              <option value="low">Bisa Menunggu</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="patientCondition">Kondisi Pasien</label>
-            <textarea
-              id="patientCondition"
-              rows="3"
-              placeholder="Jelaskan kondisi pasien secara singkat"
-            ></textarea>
-          </div>
-
-          <button type="submit" class="btn">Cari Pendonor</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Emergency Call Modal -->
-    <div class="modal" id="emergencyCallModal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2>Panggilan Darurat</h2>
-        <p>Silakan pilih jenis layanan darurat yang Anda butuhkan:</p>
-
-        <div style="margin: 30px 0">
-          <button
-            class="btn"
-            style="width: 100%; margin-bottom: 15px; background-color: #dc3545"
-            id="callAmbulanceBtn"
-          >
-            🚑 Panggil Ambulans
-          </button>
-
-          <button
-            class="btn"
-            style="width: 100%; margin-bottom: 15px; background-color: #fd7e14"
-            id="callPoliceBtn"
-          >
-            🚓 Panggil Polisi
-          </button>
-
-          <button
-            class="btn"
-            style="width: 100%; background-color: #0d6efd"
-            id="callFireBtn"
-          >
-            🚒 Panggil Pemadam Kebakaran
-          </button>
+    <!-- CTA Section dengan Background Image -->
+    <section class="relative py-20 bg-red-600">
+        <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?auto=format&fit=crop&q=80'); opacity: 0.2;"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Siap Menjadi Pahlawan?</h2>
+            <p class="text-white text-xl mb-8 max-w-2xl mx-auto">Bergabunglah dengan kami dan jadilah bagian dari komunitas yang peduli terhadap sesama.</p>
+            <a href="register.php" class="bg-white blood-red-text px-8 py-4 rounded-lg font-medium hover:bg-gray-100 transition inline-flex items-center">
+                <i data-feather="heart" class="w-5 h-5 mr-2"></i>
+                Mulai Donor Sekarang
+            </a>
         </div>
+    </section>
+</main>
 
-        <p><strong>Atau hubungi nomor darurat langsung:</strong></p>
-        <p>Ambulans: 119</p>
-        <p>Polisi: 110</p>
-        <p>Pemadam Kebakaran: 113</p>
-      </div>
-    </div>
-<script src="script.js"></script>
-  </body>
-</html>
+
+
+<!-- Tambahkan script untuk animasi counter -->
+<script>
+    function animateCounter(element, target) {
+        let current = 0;
+        const increment = target / 100;
+        const duration = 2000; // 2 seconds
+        const interval = duration / 100;
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                clearInterval(timer);
+                current = target;
+            }
+            element.textContent = Math.floor(current).toLocaleString();
+        }, interval);
+    }
+
+    // Start animation when elements are in viewport
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const target = parseInt(element.textContent);
+                animateCounter(element, target);
+                observer.unobserve(element);
+            }
+        });
+    });
+
+    document.querySelectorAll('[id$="-count"]').forEach(counter => {
+        observer.observe(counter);
+    });
+</script>
+
+</main>
+
+<script>
+    // Animate stats counter
+    function animateCounter(elementId, target) {
+        let current = 0;
+        const increment = target / 100;
+        const element = document.getElementById(elementId);
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                clearInterval(timer);
+                current = target;
+            }
+            element.textContent = Math.floor(current).toLocaleString();
+        }, 10);
+    }
+    
+    // Initialize counters when section is in view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter('donor-count', 1250);
+                animateCounter('request-count', 890);
+                animateCounter('saved-count', 3420);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    observer.observe(document.querySelector('.bg-white'));
+    
+    // Initialize map
+    document.addEventListener('DOMContentLoaded', function() {
+        const map = L.map('map').setView([-0.8986, 119.8506], 13);
+        
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        }).addTo(map);
+        
+        // Add marker for SIPANDORA office
+        L.marker([-0.8986, 119.8506]).addTo(map)
+            .bindPopup('<b>SIPANDORA</b><br>Jl. Karimi No. 20, Palu')
+            .openPopup();
+    });
+</script>
+
+<?php include 'includes/footer.php'; ?>
+
+<script>
+// Highlight active nav link based on scroll position
+window.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+        const id = section.getAttribute('id');
+        
+        if(window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                link.classList.remove('border-b-2', 'border-white');
+                if(link.getAttribute('href').includes(id)) {
+                    link.classList.add('border-b-2', 'border-white');
+                }
+            });
+        }
+    });
+});
+</script>

@@ -1,128 +1,98 @@
-<?php
-session_start();
-require_once 'Database.php';
+<?php include 'includes/config.php'; ?>
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $db = Database::getInstance();
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    
-    $query = "SELECT * FROM Users WHERE email = ?";
-    $result = $db->select($query, [$email]);
-    
-    if ($result && password_verify($password, $result[0]['password'])) {
-        $_SESSION['user_id'] = $result[0]['id'];
-        $_SESSION['user_name'] = $result[0]['full_name'];
-        header('Location: dashboard.php');
-        exit();
-    } else {
-        $error = "Email atau password salah";
-    }
-}
-?>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Sistem Donor Darah</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <!-- Login Section -->
-    <section class="login-section">
-        <div class="container">
-            <div class="login-container">
-                <div class="login-header">
-                    <a href="#" class="logo">SIPAN<span>DORA</span></a>
-                    <h2>Masuk ke Akun Anda</h2>
-                    <p>Silakan masuk untuk mengakses layanan SIPANDORA</p>
+<main class="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 to-white py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-6 bg-white rounded-xl shadow-2xl p-8">
+        <!-- Logo Section -->
+        <div class="text-center">
+            <div class="flex justify-center mb-6">
+                <div class="blood-red p-4 rounded-full shadow-lg">
+                    <i data-feather="droplet" class="text-white w-10 h-10"></i>
                 </div>
-                
-                <form id="loginForm" class="login-form">
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <div class="input-with-icon">
-                            <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
-                            <i class="fas fa-envelope"></i>
-                        </div>
+            </div>
+            <h2 class="text-2xl font-bold mb-2">
+                <span class="text-red-600">SIPAN</span><span class="text-blue-900">DORA</span>
+            </h2>
+            <h3 class="text-xl font-semibold text-blue-900 mb-2">Masuk ke Akun Anda</h3>
+            <p class="text-sm text-gray-600">Silakan masuk untuk mengakses layanan SIPANDORA</p>
+        </div>
+
+        <form class="space-y-4" action="process_login.php" method="POST">
+            <!-- Email Field -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i data-feather="mail" class="h-5 w-5 text-red-500"></i>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <div class="input-with-icon">
-                            <input type="password" id="password" name="password" placeholder="Masukkan password Anda" required>
-                            <i class="fas fa-lock"></i>
-                        </div>
+                    <input id="email" name="email" type="email" required 
+                           class="pl-10 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-red-500 focus:border-red-500"
+                           placeholder="admin.rs@sipandora.com">
+                </div>
+            </div>
+
+            <!-- Password Field -->
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i data-feather="lock" class="h-5 w-5 text-red-500"></i>
                     </div>
-                    
-                    <div class="form-options">
-                        <div class="remember-me">
-                            <input type="checkbox" id="remember" name="remember">
-                            <label for="remember">Ingat saya</label>
-                        </div>
-                        <a href="#lupa-password">Lupa password?</a>
-                    </div>
-                    
-                    <button type="submit" class="btn" style="width: 100%; padding: 12px; font-size: 16px; margin-bottom: 20px;">
-                        <i class="fas fa-sign-in-alt" style="margin-right: 8px;"></i>Masuk
+                    <input id="password" name="password" type="password" required 
+                           class="pl-10 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-red-500 focus:border-red-500"
+                           placeholder="••••••••">
+                    <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-700" id="togglePassword">
+                        <i data-feather="eye" class="h-5 w-5" id="eyeIcon"></i>
                     </button>
-                    
-                    <div class="login-footer">
-                        <p>Belum punya akun? <a href="register.php">Daftar sekarang</a></p>
-                        <p>Dengan masuk, Anda setuju dengan <a href="#">Syarat dan Ketentuan</a> serta <a href="#">Kebijakan Privasi</a> kami.</p>
-                    </div>
-                </form>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-column">
-            <h3>Tentang Kami</h3>
-            <p>
-              SIPANDORA adalah platform inovatif yang menghubungkan pendonor
-              darah dengan mereka yang membutuhkan, serta menyediakan layanan
-              respon darurat untuk situasi kritis.
-            </p>
-            <div class="social-links">
-              <a href="#"><span>FB</span></a>
-              <a href="#"><span>TW</span></a>
-              <a href="#"><span>IG</span></a>
-              <a href="#"><span>YT</span></a>
+            <!-- Remember Me & Forgot Password -->
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <input id="remember-me" name="remember-me" type="checkbox" 
+                           class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
+                    <label for="remember-me" class="ml-2 block text-sm text-gray-700">Ingat saya</label>
+                </div>
+                <a href="#" class="text-sm text-red-600 hover:text-red-700">Lupa password?</a>
             </div>
-          </div>
 
-          <div class="footer-column">
-            <h3>Layanan</h3>
-            <ul class="footer-links">
-              <li><a href="#">Pencarian Darah</a></li>
-              <li><a href="#">Pendaftaran Donor</a></li>
-              <li><a href="#">Jadwal Donor</a></li>
-              <li><a href="#">Informasi Kesehatan</a></li>
-            </ul>
-          </div>
+            <!-- Login Button -->
+            <button type="submit" class="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                <i data-feather="log-in" class="h-5 w-5 mr-2"></i>
+                Masuk
+            </button>
 
-          <div class="footer-column">
-            <h3>Kontak Kami</h3>
-            <p><strong>Alamat:</strong> Jl. Kartini No. 20, Lolu Selatan, Kec. Palu Selatan, Kota Palu, Sulawesi Tengah 94235</p>
-            <p><strong>Email:</strong> info@sipandora.id</p>
-            <p><strong>Telepon:</strong> (021) 1234-5678</p>
-            <p><strong>Darurat:</strong> 119 (24 Jam)</p>
-          </div>
-        </div>
+            <!-- Register Link -->
+            <div class="text-center text-sm">
+                <p>Belum punya akun? <a href="register.php" class="text-red-600 hover:text-red-700">Daftar sekarang</a></p>
+            </div>
 
-        <div class="footer-bottom">
-          <p>&copy; 2023 SIPANDORA. Semua Hak Dilindungi.</p>
-        </div>
-      </div>
-    </footer>
+            <!-- Terms and Privacy -->
+            <div class="text-center text-xs text-gray-600">
+                <p>Dengan masuk, Anda setuju dengan <a href="#" class="text-red-600 hover:text-red-700">Syarat dan Ketentuan</a> serta <a href="#" class="text-red-600 hover:text-red-700">Kebijakan Privasi</a> kami.</p>
+            </div>
+        </form>
+    </div>
+</main>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
-</body>
-</html>
+<script>
+    // Initialize Feather icons
+    feather.replace();
+
+    // Toggle password visibility
+    document.getElementById('togglePassword').addEventListener('click', function() {
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.setAttribute('data-feather', 'eye-off');
+        } else {
+            passwordInput.type = 'password';
+            eyeIcon.setAttribute('data-feather', 'eye');
+        }
+        feather.replace();
+    });
+</script>
+
+<?php include 'includes/footer.php'; ?>
